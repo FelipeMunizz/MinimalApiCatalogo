@@ -1,8 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using MinimalApiCatalogo.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.//ConfigureServices
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+//Para o MySql
+//builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 
@@ -14,6 +22,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 
 app.Run();
