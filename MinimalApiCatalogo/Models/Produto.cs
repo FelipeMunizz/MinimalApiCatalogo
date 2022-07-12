@@ -9,5 +9,8 @@
         public string? Imagem { get; set; }
         public DateTime DataCompra { get; set; }
         public int Estoque { get; set; }
+
+        public int CategoriaId { get; set; }
+        public Categoria? Categoria { get; set; }
     }
 }
