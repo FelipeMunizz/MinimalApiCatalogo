@@ -15,7 +15,7 @@ namespace MinimalApiCatalogo.ApiEndpoints
                 {
                     return Results.BadRequest("Login Inválido");
                 }
-                if (userModel.UserName == "FelipeMuniz" && userModel.Password == "numsey#123")
+                if (userModel.UserName == "admin" && userModel.Password == "123")
                 {
                     var tokenString = tokenService.GerarToken(app.Configuration["Jwt:Key"],
                                                               app.Configuration["Jwt:Issuer"],
